@@ -28,17 +28,17 @@
       "r2_buckets": [
         {
           "binding": "HACKER_NEWS_R2",
-          "bucket_name": "hacker-news-r2"
+          "bucket_name": "hacker-news"
         }
       ],
       "kv_namespaces": [
         {
           "binding": "HACKER_NEWS_KV",
-          "id": "4d458dadadea42f8b8198fe3e29f858d"
+          "id": "63a42044de3c41978794137f24757ed8"
         },
         {
           "binding": "NEXT_CACHE_WORKERS_KV",
-          "id": "4d458dadadea42f8b8198fe3e29f858d"
+          "id": "5073794f6caf45f18f67051259ec4ff5"
         }
       ]
     }
@@ -53,17 +53,17 @@
   "r2_buckets": [
     {
       "binding": "HACKER_NEWS_R2",
-      "bucket_name": "hacker-news-r2"
+      "bucket_name": "hacker-news"
     }
   ],
   "kv_namespaces": [
     {
       "binding": "HACKER_NEWS_KV",
-      "id": "4d458dadadea42f8b8198fe3e29f858d"
+      "id": "63a42044de3c41978794137f24757ed8"
     },
     {
       "binding": "NEXT_CACHE_WORKERS_KV",
-      "id": "4d458dadadea42f8b8198fe3e29f858d"
+      "id": "5073794f6caf45f18f67051259ec4ff5"
     }
   ]
   /**
