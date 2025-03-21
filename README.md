@@ -90,4 +90,8 @@ pnpm deploy
 
 ## 免责声明
 
-本项目与 Hacker News 和 Y Combinator 没有任何关联。"Hacker News" 是 Y Combinator 的注册商标。
+## 本项目与 Hacker News 和 Y Combinator 没有任何关联。"Hacker News" 是 Y Combinator 的注册商标。
+
+```
+npm run -s opennext && WRANGLER_BUILD_PLATFORM=node wrangler deploy
+```

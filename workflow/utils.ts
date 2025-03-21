@@ -57,7 +57,10 @@ export async function getHackerNewsStory(story: Story, maxTokens: number, JINA_K
       },
     }).then((res) => {
       if (res.ok) {
-        return res.text()
+        const text = res.text()
+        console.error(`get story comments success: ${res.statusText} https://news.ycombinator.com/item?id=${story.id} [${text.length}] ${text.substring(0, 500)} `)
+
+        return text
       }
       else {
         console.error(`get story comments failed: ${res.statusText} https://news.ycombinator.com/item?id=${story.id}`)

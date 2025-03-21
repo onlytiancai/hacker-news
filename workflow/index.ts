@@ -50,11 +50,12 @@ export class HackerNewsWorkflow extends WorkflowEntrypoint<CloudflareEnv, Params
     const allStories: string[] = []
 
     for (const story of stories) {
+      console.info(`begin get story ${story.id} content`)
       const storyResponse = await step.do(`get story ${story.id}: ${story.title}`, retryConfig, async () => {
         return await getHackerNewsStory(story, maxTokens, this.env.JINA_KEY)
       })
 
-      console.info(`get story ${story.id} content success`)
+      console.info(`end get story ${story.id} content success`)
 
       const text = await step.do(`summarize story ${story.id}: ${story.title}`, retryConfig, async () => {
         const { text, usage, finishReason } = await generateText({
