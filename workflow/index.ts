@@ -64,6 +64,12 @@ export class HackerNewsWorkflow extends WorkflowEntrypoint<CloudflareEnv, Params
           prompt: storyResponse,
         })
 
+        await this.env.HACKER_NEWS_KV.put(`story-summary:${story.id}`, JSON.stringify({
+          text,
+          usage,
+          finishReason,
+        }))
+
         console.info(`get story ${story.id} summary success`, { text, usage, finishReason })
         return text
       })
