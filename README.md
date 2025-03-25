@@ -6,9 +6,9 @@
 
 预览地址: <https://hacker-news.agi.li>
 
-订阅地址: <https://hacker-news.agi.li/rss.xml>
+Podcast 订阅地址: <https://hacker-news.agi.li/rss.xml>
 
-博客版订阅地址: <https://hacker-news.agi.li/blog.xml>
+RSS Reader 订阅地址: <https://hacker-news.agi.li/blog.xml>
 
 ## 主要特性
 
@@ -61,6 +61,7 @@ AUDIO_VOICE_ID=zh-CN-XiaoxiaoNeural
 ```bash
 # 开发工作流
 pnpm dev:workflow
+# curl "http://localhost:8787/workflow" # 手动触发工作流
 
 # 开发 Web 页面
 pnpm dev
