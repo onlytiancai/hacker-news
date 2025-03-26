@@ -17,7 +17,7 @@ const retryConfig: WorkflowStepConfig = {
     delay: '10 seconds',
     backoff: 'exponential',
   },
-  timeout: '3 minutes',
+  timeout: '5 minutes',
 }
 
 export class HackerNewsWorkflow extends WorkflowEntrypoint<CloudflareEnv, Params> {

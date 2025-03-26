@@ -75,6 +75,15 @@ export function ArticleCard({ article, staticHost = '', showSummary = false, sho
                     {story.title}
                   </Link>
                   <Link
+                    href={`/summary/${story.id}`}
+                    className="text-xs px-2 py-1 rounded-md bg-zinc-100 text-zinc-500 hover:bg-zinc-200 transition-all"
+                    title="摘要"
+                    rel="nofollow"
+                  >
+                    摘要
+                  </Link>
+
+                  <Link
                     href={`https://news.ycombinator.com/item?id=${story.id}`}
                     className="text-xs px-2 py-1 rounded-md bg-zinc-100 text-zinc-500 hover:bg-zinc-200 transition-all"
                     title="评论"
