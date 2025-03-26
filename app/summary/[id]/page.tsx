@@ -3,6 +3,7 @@ import { podcastTitle } from '@/config'
 import { getCloudflareContext } from '@opennextjs/cloudflare'
 import { notFound } from 'next/navigation'
 import Markdown from 'react-markdown'
+import './styles.css'
 
 export const dynamicParams = true
 export const revalidate = 300
@@ -53,6 +54,8 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
   }
 
   return (
-    <Markdown>{post.text}</Markdown>
+    <div class="content">
+      <Markdown>{post.text}</Markdown>
+    </div>
   )
 }
