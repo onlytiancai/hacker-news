@@ -27,6 +27,40 @@ export class HackerNewsWorkflow extends WorkflowEntrypoint<CloudflareEnv, Params
     const runEnv = this.env.NEXTJS_ENV || 'production'
     const isDev = runEnv === 'development'
     const today = event.payload.today || new Date().toISOString().split('T')[0]
+    const retryMp3 = event.payload.retry_mp3
+
+    if (retryMp3) {
+      const contentKey = `content:${runEnv}:hacker-news:${today}`
+      const podcastKey = `${today.replaceAll('-', '/')}/${runEnv}/hacker-news-${today}.mp3`
+      const post = (await this.env.HACKER_NEWS_KV.get(contentKey, 'json'))
+      if (!post) {
+        console.info('post not found')
+        return
+      }
+
+      await step.do('create podcast audio', { ...retryConfig, timeout: '5 minutes' }, async () => {
+        const { audio } = await synthesize({
+          text: post.podcastContent,
+          language: 'zh-CN',
+          voice: this.env.AUDIO_VOICE_ID || 'zh-CN-XiaoxiaoNeural',
+          rate: this.env.AUDIO_SPEED || '10%',
+        })
+
+        await this.env.HACKER_NEWS_R2.put(podcastKey, audio)
+
+        const podcast = await this.env.HACKER_NEWS_R2.head(podcastKey)
+
+        if (!podcast || podcast.size < audio.size) {
+          throw new Error('podcast not found')
+        }
+
+        return 'OK'
+      })
+
+      console.info('save podcast to r2 success')
+      return
+    }
+
     const openai = createOpenAICompatible({
       name: 'openai',
       baseURL: this.env.OPENAI_BASE_URL!,

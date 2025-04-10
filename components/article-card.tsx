@@ -48,6 +48,7 @@ export function ArticleCard({ article, staticHost = '', showSummary = false, sho
           </AudioPlayer>
         </Suspense>
       </CardContent>
+      <p><a href={audio} download>下载 MP3</a></p>
       {showFooter && (
         <CardFooter>
           <Tabs defaultValue="summary" className="w-full">
